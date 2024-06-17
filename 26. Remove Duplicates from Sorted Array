@@ -1,0 +1,28 @@
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+// It took me 15 mins to run basic 2 cases successfully
+// and additional 5 mins to be able to submit below solution successfully after running all test cases.
+func removeDuplicates(nums []int) int {
+    
+    i := 0
+    indexToBeChanged := 1
+    numberToCompare := 0
+    if len(nums) == 0 {
+        return 0
+    }else if len(nums) == 1 {
+        return 1
+    } else {
+        numberToCompare = nums[i]
+    }
+
+    for ;i<len(nums);{
+        fmt.Printf("\n numberToCompare=%d, indexToBeChanged=%d", numberToCompare, indexToBeChanged)
+
+        if numberToCompare != nums[i] {
+            nums[indexToBeChanged] = nums[i]
+            indexToBeChanged++
+            numberToCompare = nums[i]
+        }
+        i++;
+    }
+    return indexToBeChanged
+}
