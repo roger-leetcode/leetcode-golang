@@ -1,0 +1,44 @@
+// https://leetcode.com/problems/remove-element/
+// It took me 22 mins to run basic 2 cases successfully
+// and additional 2 mins to be able to submit below solution successfully after running all test cases.
+
+
+func removeElement(nums []int, val int) int {
+    
+    if (len(nums) == 0) {
+        return len(nums)
+    } 
+    
+    totalCount := 0
+    j := len(nums) - 1
+    for i:=0 ; i < len(nums); {
+        if (i==j) || (j < i){
+            if nums[i] != val {
+                totalCount++
+            }
+            break
+        }
+
+        if (nums[i] == val) {
+            if ((nums[j] != val) && (nums[i] != nums[j])){
+                temp := 0
+                temp = nums[i]
+                nums[i] = nums[j]
+                nums[j] = temp
+                i++
+                j--
+                totalCount++
+            } else if (nums[j] == val) {
+                j--
+            }else{
+                i++
+                totalCount++
+            }
+        } else {                
+            i++
+            totalCount++
+        }
+    }
+    fmt.Print("totalCount=",totalCount)
+    return totalCount
+}
